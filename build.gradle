@@ -346,15 +346,15 @@ dependencies {
     implementation 'com.jayway.jsonpath:json-path:2.4.0'
 
     // For PDF image extraction
-    implementation 'org.apache.pdfbox:pdfbox:2.0.20'
-    implementation 'org.apache.pdfbox:pdfbox-tools:2.0.20'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.24'
+    implementation 'org.apache.pdfbox:pdfbox-tools:2.0.24'
     implementation 'org.bouncycastle:bcmail-jdk15on:1.69'								// To decrypt passworded/secured pdf's
     implementation 'com.github.jai-imageio:jai-imageio-core:1.4.0'						// For pdf image extraction, specifically for jpeg2000 (jpx) support.
     implementation 'com.github.jai-imageio:jai-imageio-jpeg2000:1.4.0'					// For pdf image extraction, specifically for jpeg2000 (jpx) support.
 
 
 
-    implementation 'com.github.gotson:webp-imageio:0.2.0' // webp support https://search.maven.org/artifact/com.github.gotson/webp-imageio/0.2.0/jar
+    implementation 'com.github.gotson:webp-imageio:0.2.1' // webp support https://search.maven.org/artifact/com.github.gotson/webp-imageio/0.2.1/jar
 
     // For syntax highlighting in macro editor
     implementation group: 'com.fifesoft', name: 'rsyntaxtextarea', version: '3.0.8'		// https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea
@@ -383,7 +383,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 
     // For mocking features during unit tests
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.9.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
 
     // flexmark markdown parsing / conversion
     implementation 'com.vladsch.flexmark:flexmark-all:0.61.12'
