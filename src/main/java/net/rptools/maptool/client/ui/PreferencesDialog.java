@@ -89,6 +89,7 @@ public class PreferencesDialog extends JDialog {
   private final JSpinner fogOverlayOpacitySpinner;
   private final JCheckBox useHaloColorAsVisionOverlayCheckBox;
   private final JCheckBox autoRevealVisionOnGMMoveCheckBox;
+  private final JCheckBox mapVisibilityWarning;
   private final JCheckBox showSmiliesCheckBox;
   private final JCheckBox playSystemSoundCheckBox;
   private final JCheckBox playStreamsCheckBox;
@@ -260,6 +261,7 @@ public class PreferencesDialog extends JDialog {
 
     useHaloColorAsVisionOverlayCheckBox = panel.getCheckBox("useHaloColorAsVisionOverlayCheckBox");
     autoRevealVisionOnGMMoveCheckBox = panel.getCheckBox("autoRevealVisionOnGMMoveCheckBox");
+    mapVisibilityWarning = panel.getCheckBox("mapVisibilityWarning");
     showSmiliesCheckBox = panel.getCheckBox("showSmiliesCheckBox");
     playSystemSoundCheckBox = panel.getCheckBox("playSystemSounds");
     playStreamsCheckBox = panel.getCheckBox("playStreams");
@@ -631,6 +633,8 @@ public class PreferencesDialog extends JDialog {
         e ->
             AppPreferences.setAutoRevealVisionOnGMMovement(
                 autoRevealVisionOnGMMoveCheckBox.isSelected()));
+    mapVisibilityWarning.addActionListener(
+        e -> AppPreferences.setMapVisibilityWarning(mapVisibilityWarning.isSelected()));
     showSmiliesCheckBox.addActionListener(
         e -> AppPreferences.setShowSmilies(showSmiliesCheckBox.isSelected()));
     playSystemSoundCheckBox.addActionListener(
@@ -943,6 +947,7 @@ public class PreferencesDialog extends JDialog {
     useHaloColorAsVisionOverlayCheckBox.setSelected(
         AppPreferences.getUseHaloColorOnVisionOverlay());
     autoRevealVisionOnGMMoveCheckBox.setSelected(AppPreferences.getAutoRevealVisionOnGMMovement());
+    mapVisibilityWarning.setSelected(AppPreferences.getMapVisibilityWarning());
     showSmiliesCheckBox.setSelected(AppPreferences.getShowSmilies());
     playSystemSoundCheckBox.setSelected(AppPreferences.getPlaySystemSounds());
     playStreamsCheckBox.setSelected(AppPreferences.getPlayStreams());

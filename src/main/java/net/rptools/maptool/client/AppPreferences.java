@@ -90,6 +90,8 @@ public class AppPreferences {
   private static final String KEY_AUTO_REVEAL_VISION_ON_GM_MOVEMENT = "autoRevealVisionOnGMMove";
   private static final boolean DEFAULT_AUTO_REVEAL_VISION_ON_GM_MOVEMENT = false;
 
+  private static final String KEY_MAP_VISIBILITY_WARNING = "mapVisibilityWarning";
+
   private static final String KEY_USE_SOFT_FOG_EDGES = "useSoftFog";
   private static final boolean DEFAULT_USE_SOFT_FOG_EDGES = true;
 
@@ -288,6 +290,14 @@ public class AppPreferences {
   public static boolean getAutoRevealVisionOnGMMovement() {
     return prefs.getBoolean(
         KEY_AUTO_REVEAL_VISION_ON_GM_MOVEMENT, DEFAULT_AUTO_REVEAL_VISION_ON_GM_MOVEMENT);
+  }
+
+  public static void setMapVisibilityWarning(boolean flag) {
+    prefs.putBoolean(KEY_MAP_VISIBILITY_WARNING, flag);
+  }
+
+  public static boolean getMapVisibilityWarning() {
+    return prefs.getBoolean(KEY_MAP_VISIBILITY_WARNING, false);
   }
 
   private static int range0to255(int value) {

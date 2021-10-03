@@ -46,7 +46,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
   private JButton generatePlayerPassword;
   private JTextField gmPassword;
   private JTextField playerPassword;
-  //private JCheckBox hideMapSelectUI;
+  private JCheckBox hideMapSelectUI;
 
   public StartServerDialog() {
     super("net/rptools/maptool/client/ui/forms/startServerDialog.xml");
@@ -70,7 +70,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
     generatePlayerPassword = (JButton) getComponent("@generatePlayerPassword");
     gmPassword = (JTextField) getComponent("@GMPassword");
     playerPassword = (JTextField) getComponent("@playerPassword");
-    //hideMapSelectUI = (JCheckBox) getComponent("@hideMapSelectUI");
+    hideMapSelectUI = (JCheckBox) getComponent("@hideMapSelectUI");
 
     getRoleCombo().setModel(new DefaultComboBoxModel<>(Player.Role.values()));
     getRoleCombo().setSelectedItem(prefs.getRole());
@@ -97,7 +97,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
           }
         });
 
-    //hideMapSelectUI.setSelected(prefs.getMapSelectUIHidden());
+    hideMapSelectUI.setSelected(prefs.getMapSelectUIHidden());
 
     movementMetricCombo = getMovementMetric();
     DefaultComboBoxModel movementMetricModel = new DefaultComboBoxModel();
@@ -169,9 +169,9 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
     return (JCheckBox) getComponent("@useToolTipsForUnformattedRolls");
   }
 
-  public JCheckBox hideMapSelectUI() {
+  /*public JCheckBox hideMapSelectUI() {
       return (JCheckBox) getComponent("@hideMapSelectUI");
-  }
+  } I have no idea how this is meant to work, but it currently isn't. :) Was there ever a follow up to https://forums.rptools.net/viewtopic.php?f=3&t=9768*/
 
   public JComboBox getMovementMetric() {
     return (JComboBox) getComponent("movementMetric");
@@ -212,7 +212,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
                 prefs.setRole((Player.Role) getRoleCombo().getSelectedItem());
                 prefs.setMovementMetric((WalkerMetric) movementMetricCombo.getSelectedItem());
                 prefs.setAutoRevealOnMovement(autoRevealOnMovement.isSelected());
-                //prefs.setMapSelectUIHidden(hideMapSelectUI.isSelected());
+                prefs.setMapSelectUIHidden(hideMapSelectUI.isSelected());
                 accepted = true;
                 dialog.closeDialog();
               }
