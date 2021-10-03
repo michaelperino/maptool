@@ -46,6 +46,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
   private JButton generatePlayerPassword;
   private JTextField gmPassword;
   private JTextField playerPassword;
+  //private JCheckBox hideMapSelectUI;
 
   public StartServerDialog() {
     super("net/rptools/maptool/client/ui/forms/startServerDialog.xml");
@@ -69,6 +70,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
     generatePlayerPassword = (JButton) getComponent("@generatePlayerPassword");
     gmPassword = (JTextField) getComponent("@GMPassword");
     playerPassword = (JTextField) getComponent("@playerPassword");
+    //hideMapSelectUI = (JCheckBox) getComponent("@hideMapSelectUI");
 
     getRoleCombo().setModel(new DefaultComboBoxModel<>(Player.Role.values()));
     getRoleCombo().setSelectedItem(prefs.getRole());
@@ -94,6 +96,8 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
             autoRevealOnMovement.setEnabled(true);
           }
         });
+
+    //hideMapSelectUI.setSelected(prefs.getMapSelectUIHidden());
 
     movementMetricCombo = getMovementMetric();
     DefaultComboBoxModel movementMetricModel = new DefaultComboBoxModel();
@@ -165,6 +169,10 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
     return (JCheckBox) getComponent("@useToolTipsForUnformattedRolls");
   }
 
+  public JCheckBox hideMapSelectUI() {
+      return (JCheckBox) getComponent("@hideMapSelectUI");
+  }
+
   public JComboBox getMovementMetric() {
     return (JComboBox) getComponent("movementMetric");
   }
@@ -204,6 +212,7 @@ public class StartServerDialog extends AbeillePanel<StartServerDialogPreferences
                 prefs.setRole((Player.Role) getRoleCombo().getSelectedItem());
                 prefs.setMovementMetric((WalkerMetric) movementMetricCombo.getSelectedItem());
                 prefs.setAutoRevealOnMovement(autoRevealOnMovement.isSelected());
+                //prefs.setMapSelectUIHidden(hideMapSelectUI.isSelected());
                 accepted = true;
                 dialog.closeDialog();
               }

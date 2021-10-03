@@ -37,6 +37,7 @@ public class StartServerDialogPreferences {
   private static final String KEY_RPTOOLS_PRIVATE = "rptoolsPrivate";
   private static final String KEY_PLAYERS_CAN_REVEAL_VISION = "playersCanRevealVisionCheckbox";
   private static final String KEY_GM_REVEALS_VISION = "gmRevealsVisionForUnownedTokens";
+  private static final String KEY_HIDE_MAP_SELECT_UI = "hideMapSelectUI";
   private static final String KEY_USE_INDIVIDUAL_VIEWS = "useIndividualViews";
   private static final String KEY_USE_UPNP = "useUPnP";
   private static final String KEY_RESTRICTED_IMPERSONATION = "restrictedImpersonation";
@@ -201,7 +202,15 @@ public class StartServerDialogPreferences {
     return prefs.getBoolean(KEY_AUTO_REVEAL_ON_MOVE, false);
   }
 
+  public boolean getMapSelectUIHidden() {
+    return prefs.getBoolean(KEY_HIDE_MAP_SELECT_UI, false);
+  }
+
   public void setAutoRevealOnMovement(boolean flag) {
     prefs.putBoolean(KEY_AUTO_REVEAL_ON_MOVE, flag);
+  }
+
+  public void setMapSelectUIHidden(boolean flag) {
+    prefs.putBoolean(KEY_HIDE_MAP_SELECT_UI, flag);
   }
 }
