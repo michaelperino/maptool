@@ -57,6 +57,7 @@ public class ToolbarPanel extends JToolBar {
   private final Component horizontalSpacer;
   private final JPanel optionPanel;
   private final Toolbox toolbox;
+  private final JButton mapselect;
 
   public ToolbarPanel(Toolbox tbox) {
     setRollover(true);
@@ -178,7 +179,8 @@ public class ToolbarPanel extends JToolBar {
     // Jamz: End panel
 
     // the "Select Map" button
-    add(createZoneSelectionButton());
+    mapselect = createZoneSelectionButton();
+    add(mapselect);
 
     // Non visible tools
     tbox.createTool(GridTool.class);
@@ -197,6 +199,10 @@ public class ToolbarPanel extends JToolBar {
           vertSplit.setVisible(orientation == JToolBar.HORIZONTAL);
           vertSpacer.setVisible(orientation == JToolBar.HORIZONTAL);
         });
+  }
+
+  public JButton getMapselect() {
+    return mapselect;
   }
 
   public JPanel getOptionPanel() {

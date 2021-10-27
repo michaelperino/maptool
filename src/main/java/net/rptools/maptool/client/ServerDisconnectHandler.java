@@ -28,6 +28,7 @@ public class ServerDisconnectHandler implements DisconnectHandler {
   public void handleDisconnect(AbstractConnection arg0) {
     // Update internal state
     MapTool.disconnect();
+    MapTool.getFrame().getToolbarPanel().getMapselect().setVisible(true);
 
     // TODO: attempt to reconnect if this was unexpected
     if (!disconnectExpected) {

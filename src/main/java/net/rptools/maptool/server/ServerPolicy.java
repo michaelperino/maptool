@@ -36,6 +36,7 @@ public class ServerPolicy {
   private boolean useIndividualFOW;
   private boolean isAutoRevealOnMovement;
   private boolean includeOwnedNPCs = true; // Include Owned NPC Tokens in FoW views
+  private boolean hidemapselectui;
   private WalkerMetric movementMetric;
 
   private boolean useAstarPathfinding = AppPreferences.isUsingAstarPathfinding();
@@ -123,6 +124,14 @@ public class ServerPolicy {
 
   public void setPlayersReceiveCampaignMacros(boolean flag) {
     playersReceiveCampaignMacros = flag;
+  }
+
+  public boolean hiddenMapSelectUI() {
+    return hidemapselectui;
+  }
+
+  public void setHiddenMapSelectUI(boolean flag) {
+    hidemapselectui = flag;
   }
 
   /**
@@ -238,6 +247,8 @@ public class ServerPolicy {
     sinfo.addProperty(
         "players receive campaign macros",
         playersReceiveCampaignMacros() ? BigDecimal.ONE : BigDecimal.ZERO);
+    sinfo.addProperty(
+        "players see map select menu", hiddenMapSelectUI() ? BigDecimal.ONE : BigDecimal.ZERO);
 
     WalkerMetric metric =
         MapTool.isPersonalServer() ? AppPreferences.getMovementMetric() : getMovementMetric();

@@ -2173,6 +2173,7 @@ public class AppActions {
                 policy.setUseIndividualViews(serverProps.getUseIndividualViews());
                 policy.setPlayersReceiveCampaignMacros(
                     serverProps.getPlayersReceiveCampaignMacros());
+                policy.setHiddenMapSelectUI(serverProps.getMapSelectUIHidden());
                 policy.setIsMovementLocked(MapTool.getServerPolicy().isMovementLocked());
                 policy.setIsTokenEditorLocked(MapTool.getServerPolicy().isTokenEditorLocked());
 
@@ -2327,6 +2328,11 @@ public class AppActions {
                   MapTool.getFrame()
                       .showFilledGlassPane(
                           new StaticMessageDialog(I18N.getText("msg.info.campaignLoading")));
+                  if (MapTool.getServerPolicy().hiddenMapSelectUI()) {
+                    MapTool.getFrame().getToolbarPanel().getMapselect().setVisible(false);
+                  } else {
+                    MapTool.getFrame().getToolbarPanel().getMapselect().setVisible(true);
+                  }
                 } catch (UnknownHostException e1) {
                   MapTool.showError("msg.error.unknownHost", e1);
                   failed = true;
@@ -2362,6 +2368,7 @@ public class AppActions {
           if (MapTool.isHostingServer() && !MapTool.confirm("msg.confirm.hostingDisconnect"))
             return;
           disconnectFromServer();
+          MapTool.getFrame().getToolbarPanel().getMapselect().setVisible(true);
         }
       };
 
